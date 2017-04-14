@@ -5,7 +5,10 @@ class Course:
 	prof = "Default professor name"
 	time = [][][]
 
-	def __init__(self):
-		
+	def __init__(self, title, nbr, prof, time):
+		self.title = title
+		self.nbr = nbr
+		self.prof = prof
+		self.time = time
 	def print():
 		

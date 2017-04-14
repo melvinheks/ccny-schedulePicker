@@ -4,8 +4,18 @@ courses = []
 schedules = [][]
 
 def initCourses(datain):
-	course = Course(datain[0],datain[1],datain[2],datain[3],datain[4]);
-	courses.append(course);					
+	file1 = open(datain,"r");
+	classes = []
+	while true:
+		data = file1.readline()
+		if(data == ""):
+			break;
+		classes.append(data);
+	for i in range (0,len(classes)):
+		tmp = classes[i].split()
+		course = Course(tmp[0],tmp[1],tmp[2],tmp[3],tmp[4]);
+		courses.append(course);	
+	file1.close()				
 def determineSchedules(courses):
 	
 def determineOverlap(course1, course2):

@@ -1,10 +1,13 @@
 class Course:
 	
-	title = "Default course name"
-	nbr = 0
-	prof = "Default professor name"
-	time = [][][]
+	"""A Course such as those found on cunyfirst
 
+	Attributes:
+		title: A string that represents the name of the course e.g. CSC103 Intro to Computing for Majors
+		nbr: An integer representing a unique id or number for the course.
+		prof: A string representing the professor of the course.
+		time: A dictionary of an array of tuples that is used to retrieve all of the course times. The first key is the day, the first index is the occurrence i.e. there are some courses that have different times on the same day, the second index is the start and end tuple. E.g. time["monday"][0][START] will return the start time for a Course's monday class.
+	"""
 	def __init__(self, title, nbr, prof, time):
 		self.title = title
 		self.nbr = nbr

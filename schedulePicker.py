@@ -2,6 +2,8 @@ from Course import Course
 
 courses = []
 schedules = [[]]
+START = 0
+END = 1
 
 def initCourses(datain):
 	

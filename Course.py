@@ -1,6 +1,7 @@
 class Course:
-
+	
 	"""A Course such as those found on cunyfirst
+
 	Attributes:
 		title: A string that represents the name of the course e.g. CSC103 Intro to Computing for Majors
 		nbr: An integer representing a unique id or number for the course.
@@ -17,9 +18,8 @@ class Course:
 		"""Returns a string array of all day times for the Course"""
 		s = []
 		for occurrences in time[day] :
-		s.append("{}: {}-{}\n".format(day, occurrences[0], occurrences[1]))
+			s.append("{}: {}-{}\n".format(day, occurrences[0], occurrences[1]))
 		return s
 	def courseNbr(self):
 		"""Returns a string with nbr"""
 		return "Course Number:{}".format(self.nbr)
-		

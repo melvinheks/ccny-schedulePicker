@@ -1,7 +1,7 @@
-from .Course import Course
+from Course import Course
 
 courses = []
-schedules = [][]
+schedules = [[]]
 
 def initCourses(datain):
 	

@@ -13,7 +13,7 @@ def initCourses(datain):
 		classes.append(data);
 	for i in range (0,len(classes)):
 		tmp = classes[i].split()
-		course = Course(tmp[0],tmp[1],tmp[2],tmp[3],tmp[4]);
+		course = Course(tmp[0],tmp[1],tmp[2],tmp[3]);
 		courses.append(course);	
 	file1.close()				
 def determineSchedules(courses):

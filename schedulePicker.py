@@ -17,6 +17,8 @@ def initCourses(datain):
 		for j in range (0,(len(tmp)-3)/2):
 			day[tmp[3+j*5]] = {}
 			day[tmp[3+j*5]][j] = {}
+			day[tmp[3+j*5]][j][tmp[4+j*5] = {}
+			day[tmp[3+j*5]][j][tmp[6+j*5] = {}
 		for j in range (0,(len(tmp)-3)/2):
 			day[tmp[3+j*5][j][tmp[4+j*5]] = int(tmp[5+j*5])
 			day[tmp[3+j*5][j][tmp[6+j*5]] = int(tmp[7+j*5])

@@ -17,8 +17,8 @@ class Course:
 	def dayTimes(self, day):
 		"""Returns a string array of all day times for the Course"""
 		s = []
-		for occurrences in time[day] :
-			s.append("{}: {}-{}\n".format(day, occurrences[0], occurrences[1]))
+		for occurrences in self.time[day] :
+			s.append("{}: {}-{}".format(day, occurrences[0], occurrences[1]))
 		return s
 	def courseNbr(self):
 		"""Returns a string with nbr"""

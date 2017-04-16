@@ -23,3 +23,4 @@ class Course:
 	def courseNbr(self):
 		"""Returns a string with nbr"""
 		return "Course Number:{}".format(self.nbr)
+>>>>>>> 3be50235e03461069c575d6753b7a4498d8f8fc5

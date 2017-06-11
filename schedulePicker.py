@@ -15,7 +15,22 @@ def initCourses(datain):
 		time[datain[dayIdx]].append(occurrence)
 	courses.append(Course(datain[0], int(datain[1]), datain[2], time))
 def determineSchedules(courses):
-	
+	schedules = []
+	for course in courses:
+		possible = []
+		possible.append(course)
+		for othercourse in courses:
+			overlap = False
+			for established in possible:
+				if determineOverlap(othercourse, established):
+					overlap = True
+					break
+			if not overlap:
+				possible.append(othercourse)
+		possible.sort(key=lambda x: x.title)
+		if possible not in schedules:
+			schedules.append(possible)
+	return schedules
 def determineOverlap(course1, course2):
 	for day in course1.time:
 		if day in course2.time:

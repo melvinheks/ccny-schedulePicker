@@ -45,7 +45,7 @@ def determineSchedules(courses):
 		for othercourse in courses:
 			overlap = False
 			for established in possible:
-				if determineOverlap(othercourse, established):
+				if othercourse.title == established.title or determineOverlap(othercourse, established):
 					overlap = True
 					break
 			if not overlap:

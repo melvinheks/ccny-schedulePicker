@@ -1,29 +1,34 @@
 from Course import Course
+import fileinput
 
-courses = []
-schedules = [[]]
 START = 0
 END = 1
 
 def initCourses(datain):
-	"""Initializes and adds a Course to courses
+	"""Returns all Courses by initializing from datain 
 		
 		Args:
-			datain (str[]):
-				[0] == title
-				[1] == nbr
-				[2] == prof
-				[3],[4],[5], etc. == day,start,end, day,start,end, ... 
+			datain (str[][]):
+				[i][0] == title
+				[i][1] == nbr
+				[i][2] == prof
+				[i][3],[i][4],[i][5], etc. == day,start,end, day,start,end, ... 
+
+		Returns:
+			courses (Course[]): 2d list of courses
 	"""
-	time  = {}
-	for i in range(1, (len(datain)-3)/3 + 1):
-		dayIdx = 3*i
-		if datain[dayIdx] not in time:
-			time[datain[dayIdx]] = []
-		occurrence = [int(datain[dayIdx+1]), int(datain[dayIdx+2])]
-		time[datain[dayIdx]].append(occurrence)
-	courses.append(Course(datain[0], int(datain[1]), datain[2], time))
-# I want to rewrite this function in such a that it does not need to check for duplicates
+	courses = []
+	for course in datain:
+		time  = {}
+		for i in range(1, int((len(course)-3)/3) + 1):
+			dayIdx = 3*i
+			if course[dayIdx] not in time:
+				time[course[dayIdx]] = []
+			occurrence = [int(course[dayIdx+1]), int(course[dayIdx+2])]
+			time[course[dayIdx]].append(occurrence)
+		courses.append(Course(course[0], int(course[1]), course[2], time))
+	return courses
+# I want to rewrite this function in such a way that it does not need to check for duplicates
 def determineSchedules(courses):
 	"""Returns all relevant schedules based on courses
 		
@@ -62,17 +67,33 @@ def determineOverlap(course1, course2):
 					if occurrence[START] <= otheroccurrence[END] and occurrence[END] >= otheroccurrence[START]:
 						return True
 						#print("Conflict on "+day+ " for course " + course1.title + " from " + str(occurrence[START]) + " to " + str(occurrence[END]) + " and course " + course2.title + " from " + str(otheroccurrence[START]) + " to " + str(otheroccurrence[END])  + ".")
+#This prints ugly text, rewrite
 def printSchedules(schedules):
 	"""Prints the schedules in an easy to read and appealing format
 		
 		Args: 
 			schedules (Course[][]): List of schedules
 	"""
-def main(filename):
+	for schedule in schedules:
+		print("Schedule\n")
+		for course in schedule:
+			print(course.title, course.time)
+		print("\nEnd\n\n")
+def getDataFromFile():
+	"""Reads from the file specified from command line arg and returns a 2d list of strings
+
+		Returns:
+			data: 2d list of strings which are made by splitting each line of input by whitespace
+	"""
+	data = []
+	for line in fileinput.input():
+		data.append(line.split())
+	return data
+def main():
 	"""Calls corresponding functions from parsing input to printing out the schedules"""
-	data = '''get data from file'''
-	initCourses(data)
-	determineSchedules(courses)
+	data = getDataFromFile()
+	courses = initCourses(data)
+	schedules = determineSchedules(courses)
 	printSchedules(schedules)
 
-main('''filename from terminal''')
+main()

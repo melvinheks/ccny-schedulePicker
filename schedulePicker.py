@@ -156,4 +156,5 @@ def main():
 	schedules.sort(key=lambda x: len(x), reverse=True)
 	printSchedules(schedules)
 
-main()
+if __name__ == "__main__":
+	main()

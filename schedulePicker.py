@@ -80,7 +80,7 @@ def printSchedules(schedules):
 			print(course.title, course.time)
 		print("\nEnd\n\n")
 def getDataFromFile():
-	"""Reads from the file specified from command line arg and returns a 2d list of strings in the correct order
+	"""Parses copy and paste from cunyfirst from the file specified from command line arg and returns a 2d list of strings in the correct order to use in initCourses
 
 		Returns:
 			data: 2d list of strings which are of the the initCourse format
@@ -115,7 +115,7 @@ def getDataFromFile():
 							break
 	return data
 def parseTimeStr(timeStr):
-	"""Reads a line from cuny first and returns a list with the correct formatting for a Course
+	"""Reads a day and time line from cuny first and returns a list with the correct formatting for a Course time
 
 	Args:
 		timeStr: line from cunyfirst that has course times
@@ -135,7 +135,7 @@ def parseTimeStr(timeStr):
 			inputArr.append(endTime)
 	return inputArr
 def convertTimeToInt(twelveStr):
-	"""Reads a twelve hour time and converts it to a 24 hour integer
+	"""Reads a twelve hour time string and converts it to a 24 hour integer
 
 		Args:
 			twelveStr: string of the format x:xxAM|PM

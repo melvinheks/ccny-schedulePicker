@@ -77,7 +77,7 @@ def printSchedules(schedules):
 	for schedule in schedules:
 		print("Schedule\n")
 		for course in schedule:
-			print(course.title, course.time)
+			print(course.title, course.nbr, course.prof, course.time)
 		print("\nEnd\n\n")
 def getDataFromFile():
 	"""Parses copy and paste from cunyfirst from the file specified from command line arg and returns a 2d list of strings in the correct order to use in initCourses
@@ -111,7 +111,7 @@ def getDataFromFile():
 							while not line[0].isspace():
 								line = next(filedata)
 							line = next(filedata)
-							prof = line
+							prof = line[:-1]
 							break
 	return data
 def parseTimeStr(timeStr):

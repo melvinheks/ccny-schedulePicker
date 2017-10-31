@@ -102,17 +102,15 @@ def getDataFromFile():
 					data.append(courseinput)
 					courseinput = []
 				else:
-					for day in days:
-						if day in line:
-							while not line[0].isspace():
-								courseinput.extend(parseTimeStr(line))
-								line = next(filedata)
+					if "PM" in line or "AM" in line:
+						while not line[0].isspace():
+							courseinput.extend(parseTimeStr(line))
 							line = next(filedata)
-							while not line[0].isspace():
-								line = next(filedata)
+						line = next(filedata)
+						while not line[0].isspace():
 							line = next(filedata)
-							prof = line[:-1]
-							break
+						line = next(filedata)
+						prof = line[:-1]
 	return data
 def parseTimeStr(timeStr):
 	"""Reads a day and time line from cuny first and returns a list with the correct formatting for a Course time
